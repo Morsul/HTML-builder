@@ -28,7 +28,7 @@ async function createHtml(){
         let fileName = path.parse(file.name).name
         fsPromise.readFile(path.resolve(componentFolder, file.name), "utf8").then(
           (data)=>{
-            innerHtml = innerHtml.replace(`{{${fileName}}}`,  data);
+            innerHtml = innerHtml.replaceAll(`{{${fileName}}}`,  data);
             if(componentList.length-1 == i){
               fs.writeFile(htmlFile, innerHtml,()=>{})
             }
