@@ -23,11 +23,15 @@ var letsReadConsole = function(){
   });
 }
 
-if (process.platform === "win32") {
-  readline.on("SIGINT", function () {
-    process.emit("SIGINT");
-  });
-}
+// if (process.platform === "win32") {
+//   readline.on("SIGINT", function () {
+//     process.emit("SIGINT");
+//   });
+// }
+readline.on("SIGINT", function () {
+  process.emit("SIGINT");
+});
+
 process.on("SIGINT", function () {
   console.log('You exited input mode')
   readline.close();
